@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --primary-text-color:#183b56;
+    --secondary-text-color:#577592;
+    --accent:#2294ed;
+    --accent-color-dark:#1d69a3;
+}
+
+body {
+    color: var(--primary-text-color);
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    padding-inline: 9%;
+    padding-top: 1.4%;
+   }
+
+
+  
+   p{
+   font-family: "Roboto",sans-serif;
+   color: var(--secondary-text-color);
+   line-height: 1.4rem;   
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#logo{
+    width: 150px;
+    height: 40px;
+    object-fit: contain;
+}
+
+nav ul{
+display: flex;
+list-style: none;
+margin-top: auto;
+margin-bottom: auto;
+}
+
+ul a{
+    margin-left:10px;
+    text-decoration: none;
+    color: #2f2f2f;
+}
+
+ul a:hover{
+    color: var(--accent-color-dark);
+}
+#navBut{
+    width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    border-radius: 4px;
+    padding: 17px;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+nav input{
+    border-radius: 4px;
+    width: 20vw;
+    padding:1.6%;
+    margin-right: 1%;
+    border: 1px solid #636363;
+    background-color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.main{
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+row-gap: 20px;
+justify-content: space-between;
+}
+.main img{
+    width: 340px;
+    height: 200px;
+    object-fit: cover;
+}
+#moreLess:hover{
+cursor: pointer;
+}
+.preNext{
+    width:60px;
+    height:40px;
+    background-color:black;
+    color: white;
+    display:grid;
+    place-items:center;
+    margin-left: 29px;
+    cursor: pointer;
+    margin-left: auto;
+}
+#loadIMG{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+    animation: loading 0.7s linear infinite;
+}
+@keyframes loading{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
