@@ -33,22 +33,6 @@ function App() {
 
 
   useEffect(() => {
-  //     async function getData() {
-  //     try {
-  //     const response = await axios.get(
-  //       `https://newsapi.org/v2/top-headlines?country=us&apiKey=999bd139edd0449c9ad0f7649bc6ebf9&pageSize=${pageSize}&category=${category}`
-  //     );
-  //     setData(response.data.articles);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-  
-    // getData();
-    // const fetch = require('node-fetch'); // only needed in Node.js <18
-
     const url = 'https://real-time-news-data.p.rapidapi.com/topic-news-by-section?topic=TECHNOLOGY&section=CAQiSkNCQVNNUW9JTDIwdk1EZGpNWFlTQldWdUxVZENHZ0pKVENJT0NBUWFDZ29JTDIwdk1ETnliSFFxQ2hJSUwyMHZNRE55YkhRb0FBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EZGpNWFlTQldWdUxVZENHZ0pKVENnQVABUAE&limit=22&country=US&lang=en';
     
     const options = {
@@ -66,7 +50,6 @@ function App() {
       })
       .then(response => {
         setData(response.data)
-        // console.log(response.data);
         setLoading(false);
   })
       .catch(error => console.error('Error:', error))
