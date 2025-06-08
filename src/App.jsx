@@ -33,6 +33,10 @@ function App() {
 
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a7f490 (fix: small issue resolved)
     const url = 'https://real-time-news-data.p.rapidapi.com/topic-news-by-section?topic=TECHNOLOGY&section=CAQiSkNCQVNNUW9JTDIwdk1EZGpNWFlTQldWdUxVZENHZ0pKVENJT0NBUWFDZ29JTDIwdk1ETnliSFFxQ2hJSUwyMHZNRE55YkhRb0FBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EZGpNWFlTQldWdUxVZENHZ0pKVENnQVABUAE&limit=22&country=US&lang=en';
     
     const options = {
