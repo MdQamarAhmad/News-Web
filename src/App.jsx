@@ -33,20 +33,43 @@ function App() {
 
 
   useEffect(() => {
-      async function getData() {
-      try {
-      const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=999bd139edd0449c9ad0f7649bc6ebf9&pageSize=${pageSize}&category=${category}`
-      );
-      setData(response.data.articles);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  }
+  //     async function getData() {
+  //     try {
+  //     const response = await axios.get(
+  //       `https://newsapi.org/v2/top-headlines?country=us&apiKey=999bd139edd0449c9ad0f7649bc6ebf9&pageSize=${pageSize}&category=${category}`
+  //     );
+  //     setData(response.data.articles);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
   
-    getData();
+    // getData();
+    // const fetch = require('node-fetch'); // only needed in Node.js <18
+
+    const url = 'https://real-time-news-data.p.rapidapi.com/topic-news-by-section?topic=TECHNOLOGY&section=CAQiSkNCQVNNUW9JTDIwdk1EZGpNWFlTQldWdUxVZENHZ0pKVENJT0NBUWFDZ29JTDIwdk1ETnliSFFxQ2hJSUwyMHZNRE55YkhRb0FBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EZGpNWFlTQldWdUxVZENHZ0pKVENnQVABUAE&limit=22&country=US&lang=en';
+    
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': '803a2dcd7amshc7091c1234aa418p1743fejsnfa731bc175b8',
+        'x-rapidapi-host': 'real-time-news-data.p.rapidapi.com'
+      }
+    };
+    
+    fetch(url, options)
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        return response.json();
+      })
+      .then(response => {
+        setData(response.data)
+        // console.log(response.data);
+        setLoading(false);
+  })
+      .catch(error => console.error('Error:', error))
   }, [category, pageSize]);
 
   return (
@@ -71,12 +94,12 @@ function App() {
       <div className="main">
         {data.map((e, index) => (
           <div key={index}>
-            <div onClick={() => check(e.url)}><img style={{ cursor: 'pointer' }} src={!e.urlToImage ? urlToImage : e.urlToImage} alt='err' /></div>
+            <div onClick={() => check(e.link)}><img style={{ cursor: 'pointer' }} src={!e.photo_url ? urlToImage : e.photo_url} alt='err' /></div>
             <div style={{ padding: '12px' }}>
               <h6>{e.title}</h6>
               <br />
-              <p>BBC News {e.publishedAt}</p>
-              <p style={{ color: 'dark' }}>{!e.content ? " " : e.content.split(" ").slice(0, 20).join(" ")} {!e.content ? " " : more ? e.content.split(" ").slice(21).join(" ") : " "}</p>
+              <p>{e.source_name || "News"} {e.published_datetime_utc}</p>
+              <p style={{ color: 'dark' }}>{!e.snippet ? " " : e.snippet.split(" ").slice(0, 20).join(" ")} {!e.snippet ? " " : more ? e.snippet.split(" ").slice(21).join(" ") : " "}</p>
               <h6 id='moreLess' onClick={() => {
                 if (more == true) {
                   setMore(false);
@@ -100,11 +123,11 @@ function App() {
 
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className='preNext' onClick={pageNextPre} >
-            <svg style={{display: downVisible?'block':'none'}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4" />
+            <svg style={{display: downVisible?'block':'none'}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down-short" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4" />
             </svg>
-            <svg onClick={goToTop}  style={{ display: upVisible?'block':'none' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5" />
+            <svg onClick={goToTop}  style={{ display: upVisible?'block':'none' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up-short" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5" />
             </svg>
           </div>
         </div>
