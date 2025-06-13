@@ -59,17 +59,6 @@ ul a{
 ul a:hover{
     color: var(--accent-color-dark);
 }
-/* #navBut{
-    width: 80px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--accent);
-    border-radius: 4px;
-    padding: 17px;
-    cursor: pointer;
-} */
 
 #navBut {
     width: 100px;
@@ -125,10 +114,6 @@ justify-content: space-between;
     .main {
       justify-content: center;
     }
-    /* .img-wrapper {
-        display: flex;
-        justify-content: center;
-      } */
   }
 
   @media (max-width: 1242px){
