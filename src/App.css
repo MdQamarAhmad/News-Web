@@ -118,14 +118,8 @@ nav input {
 }
 
 @media (max-width: 830px) {
-<<<<<<< HEAD
-    .main {
-      justify-content: center;
-    }
-=======
   .main {
     justify-content: center;
->>>>>>> 6e38f59 (🐛 Fixed bugs & ✨ polished UI)
   }
 }
 
@@ -183,16 +177,6 @@ nav input {
   border: 1px solid #ccc;
   font-size: 16px;
 }
-<<<<<<< HEAD
-@keyframes loading{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-=======
 
 .search-bar button {
   padding: 8px 16px;
@@ -240,4 +224,3 @@ nav input {
 
 
 
->>>>>>> 6e38f59 (🐛 Fixed bugs & ✨ polished UI)
